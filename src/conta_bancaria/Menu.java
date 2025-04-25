@@ -1,6 +1,9 @@
 package conta_bancaria;
 
+import java.io.IOException;
 import java.util.Scanner;
+
+import conta_bancaria.model.Conta;
 import conta_bancaria.util.Cores;
 
 public class Menu {
@@ -8,8 +11,25 @@ public class Menu {
     public static void main(String[] args) {
 
         Scanner leia = new Scanner(System.in);
+        
         int opcao;
-
+        
+        // Criar (instanciar) um Objeto da Classe conta
+        Conta c1 = new Conta(1, 123, 1, "Pablo", 500000);
+        c1.visualizar();
+        
+        //sacar
+        c1.sacar(100);
+        c1.visualizar();
+        
+        //depositar
+        c1.depositar(1000);
+        c1.visualizar();
+        
+        //Alterar a propriedade titular
+        c1.setTitular("Pablo Casagrande");
+        c1.visualizar();
+        
         while (true) {
             System.out.println(Cores.TEXT_BLUE_BOLD + Cores.ANSI_YELLOW_BACKGROUND);
             System.out.println("\n"														
@@ -81,4 +101,19 @@ public class Menu {
         System.out.println("╚═════════════════════════════════════════════════════════════════════════╝");
         System.out.println(Cores.TEXT_RESET);
     }
+    
+    public static void keyPress() {
+
+		try {
+
+			System.out.println(Cores.TEXT_RESET + "\n\nPressione Enter para Continuar...");
+			System.in.read();
+
+		} catch (IOException e) {
+
+			System.out.println("Você pressionou uma tecla diferente de enter!");
+
+		}
+	}
+
 }

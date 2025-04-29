@@ -19,7 +19,8 @@ public class Conta {
 		this.titular = titular;
 		this.saldo = saldo;
 	}
-
+	
+	
 	// Métodos Get e Set
 	/*public int getNumero() {
 		return numero;
@@ -98,5 +99,7 @@ public class Conta {
 		System.out.println("Titular da Conta: " + this.titular);
 		System.out.println("Saldo da Conta: " + nfMoeda.format(this.saldo));
 	}
+	
+	
 
 }

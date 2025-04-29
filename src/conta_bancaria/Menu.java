@@ -16,22 +16,6 @@ public class Menu {
         
         int opcao = 0;
         
-        // Criar (instanciar) um Objeto da Classe conta
-        Conta c1 = new Conta(1, 123, 1, "Pablo", 500000);
-        c1.visualizar();
-        
-        //sacar
-        c1.sacar(100);
-        c1.visualizar();
-        
-        //depositar
-        c1.depositar(1000);
-        c1.visualizar();
-        
-        //Alterar a propriedade titular
-        c1.setTitular("Pablo Casagrande");
-        c1.visualizar();
-        
         // Instanciando um Objeto da Classe Conta Corrente
         ContaCorrente cc1 = new ContaCorrente(2, 456, 1, "Renata Negrini", 600000, 60000);
         cc1.visualizar();

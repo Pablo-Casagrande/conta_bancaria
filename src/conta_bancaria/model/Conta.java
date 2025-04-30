@@ -22,13 +22,13 @@ public abstract class Conta {
 	
 	
 	// Métodos Get e Set
-	/*public int getNumero() {
+	public int getNumero() {
 		return numero;
 	}
 
 	public void setNumero(int numero) {
 		this.numero = numero;
-	}*/
+	}
 
 	public int getAgencia() {
 		return agencia;
@@ -90,9 +90,9 @@ public abstract class Conta {
 		default -> tipo = "Inválido";
 		}
 
-		System.out.println("***************************************");
-		System.out.println("DADOS DA CONTA                         ");
-		System.out.println("***************************************");
+		System.out.println("                                      ");
+		System.out.println("************ DADOS DA CONTA ************");
+		System.out.println("                                      ");
 		System.out.println("Número da Conta: " + this.numero);
 		System.out.println("Número da Agência: " + this.agencia);
 		System.out.println("Tipo da Conta: " + tipo);

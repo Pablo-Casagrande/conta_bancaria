@@ -1,6 +1,7 @@
 package conta_bancaria;
 
 import java.io.IOException;
+import java.util.Optional;
 import java.util.Scanner;
 
 import conta_bancaria.controller.ContaController;
@@ -99,10 +100,58 @@ public class Menu {
 	                    break;
 	                case 4:
 	                    System.out.println(Cores.TEXT_BLUE_BOLD + Cores.ANSI_YELLOW_BACKGROUND + "\n▶ Atualizar dados da Conta:  \n" + Cores.TEXT_RESET);
+	                    
+	                    System.out.println("Digite o número da conta: ");
+	                    numero = leia.nextInt();
+	                    
+	                    Optional<Conta> conta = contas.buscarNaCollection(numero);
+	                    
+	                    // Existe?
+	                    if(conta.isPresent()) {
+	                    	
+	                    	System.out.println("Digite o número da agencia: ");
+	                        agencia = leia.nextInt();
+	                        
+	                        System.out.println("Digite o nome do titular: ");
+	                        leia.skip("\\R");
+	                        titular = leia.nextLine();
+	                         
+	                        //Recuperar tipo da conta
+	                        tipo = conta.get().getTipo();
+	                       
+	                         
+	                        System.out.println("Digite o saldo inicial da  conta: ");
+	                        saldo = leia.nextFloat();
+	                    	
+	                        //Indentificar tipo
+	                        switch(tipo) {
+	                        case 1 ->{// Se for Conta Corrente
+	                       	 		System.out.println("Digite o limite da conta: ");
+	                       	 		limite = leia.nextFloat();
+	                       	 		contas.atualizar(new ContaCorrente(numero, agencia, tipo, titular, saldo, limite));
+	                        		  }
+	                        
+	                        case 2 ->{// Se for Conta Poupanca
+	   		             	 		System.out.println("Digite o dia do aniversario da conta: ");
+	   		             	 		aniversario = leia.nextInt();
+	   		             	 		contas.atualizar(new ContaPoupanca(numero, agencia, tipo, titular, saldo, aniversario));
+	   		              		  }  
+	                        }
+   	
+	                    }else
+	                    	System.out.printf("\nA conta número %d nao existe!", numero);
+	                    
+	                    
 	                    keyPress();
 	                    break;
 	                case 5:
 	                    System.out.println(Cores.TEXT_BLUE_BOLD + Cores.ANSI_YELLOW_BACKGROUND + "\n▶ Apagar a Conta:  \n" + Cores.TEXT_RESET);
+	                    
+	                    System.out.println("Digite o número da conta: ");
+	                    numero = leia.nextInt();
+	                    
+	                    contas.deletar(numero);
+	                    
 	                    keyPress();
 	                    break;
 	                case 6:
